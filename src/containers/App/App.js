@@ -1,13 +1,18 @@
 import './App.css';
 import React, {Component} from 'react';
+import {BrowserRouter, Switch} from 'react-router-dom';
 import Header from '../../components/header/header';
+import HomePage from '../../components/pages/home-page';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <BrowserRouter>
         <Header />
-      </div>
+        <Switch>
+          <HomePage/>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

@@ -20,5 +20,6 @@ module.exports = {
   rules: {
     'require-jsdoc': 'off',
     'max-len': 'off',
+    'no-unused-vars': 'warn',
   },
 };
