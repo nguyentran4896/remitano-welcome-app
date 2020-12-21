@@ -30,6 +30,7 @@ export default class Header extends Component {
               <Button variant="outline-success">Login</Button>
             </Form>
           </Navbar.Collapse>
+          <hr/>
         </Navbar>
       </div>
     );
