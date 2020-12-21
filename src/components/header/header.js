@@ -1,9 +1,9 @@
-import { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Navbar,
   Form,
   FormControl,
-  Button
+  Button,
 } from 'react-bootstrap';
 
 export default class Header extends Component {
@@ -19,10 +19,11 @@ export default class Header extends Component {
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
-            {' '}Funny Movies
+            {' '}
+            Funny Movies
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" style={{ flexDirection: 'row-reverse' }}>
+          <Navbar.Collapse id="basic-navbar-nav" style={{flexDirection: 'row-reverse'}}>
             <Form inline>
               <FormControl type="text" placeholder="Email" className="mr-sm-2" />
               <FormControl type="text" placeholder="Password" className="mr-sm-2" />
