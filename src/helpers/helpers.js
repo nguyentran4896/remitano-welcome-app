@@ -15,5 +15,5 @@ export function handleResponse(response) {
     }
 
     return data;
-  });
+  }).catch((r) => console.log(r));
 }

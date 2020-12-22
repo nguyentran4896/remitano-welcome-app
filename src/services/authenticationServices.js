@@ -3,7 +3,13 @@ import {BehaviorSubject} from 'rxjs';
 import config from '../config.json';
 import {handleResponse} from '../helpers/helpers';
 
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+let currentUserSubject;
+try {
+  currentUserSubject= new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+} catch (error) {
+  console.log(error);
+}
+
 
 export default {
   login,
@@ -18,15 +24,20 @@ export default {
 function login(username, password) {
   const requestOptions = {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token') || undefined,
+    },
     body: JSON.stringify({username, password}),
+    credentials: 'include',
   };
 
   return fetch(`${config.baseApi}/auth`, requestOptions)
       .then(handleResponse)
       .then((user) => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('currentUser', user ? JSON.stringify(user) : '');
+        localStorage.setItem('id_token', user ? user.token : '');
 
         console.log(user);
         currentUserSubject.next(user);

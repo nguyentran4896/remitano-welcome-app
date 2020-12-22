@@ -40,7 +40,7 @@ class App extends Component {
       <BrowserRouter>
         <Header handleSignUp={this.signUp} handleLogin={this.login} handleLogout={this.logout} currentUser={this.state.currentUser}/>
         <Switch>
-          <Route path='/share' component={SharePage} />
+          <Route path='/share' component={() => <SharePage currentUser={this.state.currentUser} />} />
           <Route path='/' component={HomePage} />
         </Switch>
       </BrowserRouter>

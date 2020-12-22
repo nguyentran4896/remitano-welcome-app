@@ -45,7 +45,7 @@ export default class Header extends Component {
     return (
       <div className="header">
         <Navbar bg="dark" expand="lg" variant="dark">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               src="/logo192.png"
               width="30"
@@ -62,9 +62,9 @@ export default class Header extends Component {
             <Navbar.Collapse id="basic-navbar-nav" style={{flexDirection: 'row-reverse'}}>
               <Form inline>
                 <Navbar.Text>
-      Signed in as: <a href="#login">{this.props.currentUser.username}</a>
+      Signed in as: {this.props.currentUser.username}
                 </Navbar.Text>
-                <Button onClick={this.login} variant="outline-success">Share</Button>
+                <a className="btn btn-primary" href="/share" variant="outline-success">Share</a>
                 <Button onClick={this.logout} variant="outline-success">Logout</Button>
               </Form>
             </Navbar.Collapse> :
@@ -77,8 +77,6 @@ export default class Header extends Component {
               </Form>
             </Navbar.Collapse>
           }
-
-          <hr />
         </Navbar>
       </div>
     );
