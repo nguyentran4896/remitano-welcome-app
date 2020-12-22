@@ -12,25 +12,30 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentUser: null,
+      currentUser: authenticationServices.currentUserValue,
     };
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
-    authenticationServices.currentUser.subscribe((x) => this.setState({currentUser: x}));
+    authenticationServices.currentUser.subscribe((x) => {
+      this.setState({currentUser: x});
+    });
+  }
 
-    console.log(authenticationServices.currentUser);
+  login(username, password) {
+    authenticationServices.login(username, password);
   }
 
   logout() {
     authenticationServices.logout();
-    history.push('/login');
   }
+
 
   render() {
     return (
       <BrowserRouter>
-        <Header handleLogin={authenticationServices.login} />
+        <Header handleLogin={this.login} handleLogout={this.logout} currentUser={this.state.currentUser}/>
         <Switch>
           <Route path='/share' component={SharePage} />
           <Route path='/' component={HomePage} />
