@@ -14,6 +14,7 @@ export default class Header extends Component {
     this.state = {username: '', password: ''};
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.signUp = this.signUp.bind(this);
   }
 
   login() {
@@ -29,6 +30,15 @@ export default class Header extends Component {
     const {handleLogout} = this.props;
     const {username} = this.state;
     handleLogout(username);
+  }
+
+  signUp() {
+    const {handleSignUp} = this.props;
+    const {username, password} = this.state;
+    if (!username || !password) {
+      alert('missing information');
+    }
+    handleSignUp(username, password);
   }
 
   render() {
@@ -63,6 +73,7 @@ export default class Header extends Component {
                 <FormControl type="text" placeholder="Email" className="mr-sm-2" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})} />
                 <FormControl type="text" placeholder="Password" className="mr-sm-2" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} />
                 <Button onClick={this.login} variant="outline-success">Login</Button>
+                <Button onClick={this.signUp} variant="outline-success">Sign Up</Button>
               </Form>
             </Navbar.Collapse>
           }

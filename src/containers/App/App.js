@@ -31,11 +31,14 @@ class App extends Component {
     authenticationServices.logout();
   }
 
+  signUp(username, password) {
+    authenticationServices.signUp(username, password);
+  }
 
   render() {
     return (
       <BrowserRouter>
-        <Header handleLogin={this.login} handleLogout={this.logout} currentUser={this.state.currentUser}/>
+        <Header handleSignUp={this.signUp} handleLogin={this.login} handleLogout={this.logout} currentUser={this.state.currentUser}/>
         <Switch>
           <Route path='/share' component={SharePage} />
           <Route path='/' component={HomePage} />
