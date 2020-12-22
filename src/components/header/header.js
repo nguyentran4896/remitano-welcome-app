@@ -8,6 +8,19 @@ import {
 import './header.css';
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {username: '', password: ''};
+    this.login = this.login.bind(this);
+  }
+  login() {
+    const {handleLogin}= this.props;
+    const {username, password} = this.state;
+    if (!username || !password) {
+      alert('missing information');
+    }
+    handleLogin(username, password);
+  }
   render() {
     return (
       <div className="header">
@@ -26,9 +39,9 @@ export default class Header extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" style={{flexDirection: 'row-reverse'}}>
             <Form inline>
-              <FormControl type="text" placeholder="Email" className="mr-sm-2" />
-              <FormControl type="text" placeholder="Password" className="mr-sm-2" />
-              <Button variant="outline-success">Login</Button>
+              <FormControl type="text" placeholder="Email" className="mr-sm-2" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
+              <FormControl type="text" placeholder="Password" className="mr-sm-2" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+              <Button onClick={this.login} variant="outline-success">Login</Button>
             </Form>
           </Navbar.Collapse>
           <hr/>
