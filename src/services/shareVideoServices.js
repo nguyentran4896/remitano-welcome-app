@@ -27,7 +27,7 @@ export default function share(url) {
   return fetch(`${config.baseApi}/movies`, requestOptions)
       .then(helpers.handleResponse)
       .then((data) => {
-        toast.success(`${data.title} video shared!`);
+        toast.success(`Successfully sharing this video!`);
         return data;
       })
       .catch((err) =>{

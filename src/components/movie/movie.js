@@ -3,6 +3,7 @@ import {Card, Col} from 'react-bootstrap';
 import helpers from '../../helpers/helpers';
 
 import './movie.scss';
+import Vote from './Vote';
 
 export default class Movie extends Component {
   render() {
@@ -18,8 +19,11 @@ export default class Movie extends Component {
           </iframe>
         </div>
         <Card.Body>
-          <Card.Link className="card-title" href={url}>{title}</Card.Link>
-          <Card.Text className="card-author">Shared by: {userCreated.username}</Card.Text>
+          <Card.Link className="card-title" href={url} target="_blank">{title}</Card.Link>
+          <Card.Text className="card-author">Shared by: {userCreated.username}
+            { /* TODO: handle vote up&down*/}
+            <Vote votedUp={true} votedDown={false} />
+          </Card.Text>
           <Card.Text className="card-description">
             {description}
           </Card.Text>
