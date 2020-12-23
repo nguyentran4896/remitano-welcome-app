@@ -54,17 +54,28 @@ export default class Paginate extends Component {
       <div>
         {this.state.postData}
         <ReactPaginate
-          previousLabel={'prev'}
-          nextLabel={'next'}
-          breakLabel={'...'}
-          breakClassName={'break-me'}
+          previousLabel={'← Previous'}
+          nextLabel={'Next →'}
+          breakLabel={'<a className="page-link">...</a>'}
           pageCount={this.state.pageCount}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={this.handlePageClick}
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
-          activeClassName={'active'} />
+          activeClassName={'active'}
+
+          breakClassName={'page-item'}
+          breakLinkClassName={'page-link'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+
+
+        />
       </div>
 
     );

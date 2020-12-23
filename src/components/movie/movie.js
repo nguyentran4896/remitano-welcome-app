@@ -11,13 +11,13 @@ export default class Movie extends Component {
     const urlEmbed = `https://youtube.com/embed/${youtubeId}`;
     return (
       <Col className="movie-card" style={{display: 'flex'}}>
-        <div className="embed-responsive embed-responsive-16by9" style={{minWidth: '300px'}}>
+        <div className="video-wrap embed-responsive embed-responsive-item embed-responsive-16by9">
           <iframe width="auto" height="auto" src={urlEmbed} frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
           </iframe>
         </div>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Link className="card-title" href={url}>{title}</Card.Link>
           <Card.Text>
             Shared by: {userCreated}
           </Card.Text>
