@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '../../components/Header/Header';
 import HomePage from '../../components/HomePage/HomePage';
-import SharePage from '../../components/Share/Share';
+import SharePage from '../../components/SharePage/SharePage';
 
 import authenticationServices from '../../services/authenticationServices';
 

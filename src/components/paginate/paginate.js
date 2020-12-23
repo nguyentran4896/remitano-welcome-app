@@ -21,9 +21,12 @@ export default class Paginate extends Component {
   receivedData() {
     videoServices.getListVideo(this.state.offset, this.state.offset + this.state.perPage).then(async (data) => {
       const postData = data
-          .filter((video)=> !!helpers.getYoutubeIdFromUrl(video.url))
-          .map((video, i) =>
-            <Movie key={i} video={video} />,
+          .filter((video) => !!helpers.getYoutubeIdFromUrl(video.url))
+          .map((video, i) => {
+            const userCreated = video.userCreated;
+            video.userCreated = undefined;
+            return <Movie key={i} video={video} userCreated={userCreated} />;
+          },
           );
 
       const videoCountResp = await videoServices.getVideoCount();
@@ -56,7 +59,7 @@ export default class Paginate extends Component {
         <ReactPaginate
           previousLabel={'← Previous'}
           nextLabel={'Next →'}
-          breakLabel={'<a className="page-link">...</a>'}
+          breakLabel={'...'}
           pageCount={this.state.pageCount}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}

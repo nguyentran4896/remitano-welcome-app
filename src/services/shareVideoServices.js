@@ -1,5 +1,17 @@
+import {toast} from 'react-toastify';
+
 import config from '../config.json';
 import helpers from '../helpers/helpers';
+
+const TOAST_DEFAULT_OPTIONS = {
+  position: 'top-right',
+  autoClose: 4000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 export default function share(url) {
   const requestOptions = {
@@ -15,11 +27,11 @@ export default function share(url) {
   return fetch(`${config.baseApi}/movies`, requestOptions)
       .then(helpers.handleResponse)
       .then((data) => {
-        console.log(data);
+        toast.success(`${data.title} video shared!`);
         return data;
       })
       .catch((err) =>{
-        console.log(err);
-        alert(err);
+        toast.error(err, TOAST_DEFAULT_OPTIONS);
+        return null;
       });
 }

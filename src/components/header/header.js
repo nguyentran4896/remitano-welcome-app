@@ -5,8 +5,20 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap';
+import helpers from '../../helpers/helpers';
+import {toast} from 'react-toastify';
 
 import './header.scss';
+
+const TOAST_DEFAULT_OPTIONS = {
+  position: 'top-right',
+  autoClose: 4000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 export default class Header extends Component {
   constructor(props) {
@@ -26,7 +38,7 @@ export default class Header extends Component {
     const {handleLogin} = this.props;
     const {username, password} = this.state;
 
-    if (!verifyInput(username, password)) {
+    if (!this.verifyInput(username, password)) {
       return;
     };
 
@@ -43,7 +55,7 @@ export default class Header extends Component {
     const {handleSignUp} = this.props;
     const {username, password} = this.state;
 
-    if (!verifyInput(username, password)) {
+    if (!this.verifyInput(username, password)) {
       return;
     };
 

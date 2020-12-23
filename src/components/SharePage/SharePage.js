@@ -1,16 +1,29 @@
 import React, {Component} from 'react';
 import {Row, Col, Card, Form, Button, InputGroup, FormControl} from 'react-bootstrap';
 import share from '../../services/shareVideoServices';
+import Movie from '../Movie/Movie';
 
-export default class HomePage extends Component {
+export default class SharePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {url: ''};
+    this.state = {url: '', video: null, userCreated: null};
     this.shareVideo = this.shareVideo.bind(this);
   }
-  shareVideo() {
-    share(this.state.url);
+
+  async shareVideo(e) {
+    e.preventDefault();
+    const video = await share(this.state.url);
+    if (video) {
+      const userCreated = video.userCreated;
+      video.userCreated = undefined;
+
+      this.setState({
+        video,
+        userCreated,
+      });
+    }
   }
+
   render() {
     return (
       <Row className="share">
@@ -36,6 +49,11 @@ export default class HomePage extends Component {
             </Card.Body>
           </Card>
         </Col>
+
+        {this.state.video ?
+        <Col sm={12} md={{span: 6, offset: 3}}>
+          <Movie video={this.state.video} userCreated={this.state.userCreated} />
+        </Col> : ''}
 
       </Row>
     );

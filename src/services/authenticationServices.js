@@ -37,7 +37,7 @@ function login(username, password) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('id_token') || undefined,
+      // 'Authorization': localStorage.getItem('id_token') || undefined,
     },
     body: JSON.stringify({username, password}),
     credentials: 'include',

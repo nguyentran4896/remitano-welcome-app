@@ -6,7 +6,8 @@ import './movie.scss';
 
 export default class Movie extends Component {
   render() {
-    const {title, description, url, userCreated} = this.props.video;
+    const {title, description, url} = this.props.video;
+    const userCreated = this.props.userCreated;
     const youtubeId = helpers.getYoutubeIdFromUrl(url);
     const urlEmbed = `https://youtube.com/embed/${youtubeId}`;
     return (
@@ -18,9 +19,7 @@ export default class Movie extends Component {
         </div>
         <Card.Body>
           <Card.Link className="card-title" href={url}>{title}</Card.Link>
-          <Card.Text>
-            Shared by: {userCreated}
-          </Card.Text>
+          <Card.Text className="card-author">Shared by: {userCreated.username}</Card.Text>
           <Card.Text className="card-description">
             {description}
           </Card.Text>
