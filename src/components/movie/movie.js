@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Card, Col} from 'react-bootstrap';
 import helpers from '../../helpers/helpers';
 
-import './movie.css';
+import './movie.scss';
 
 export default class Movie extends Component {
   render() {
@@ -21,7 +21,7 @@ export default class Movie extends Component {
           <Card.Text>
             Shared by: {userCreated}
           </Card.Text>
-          <Card.Text>
+          <Card.Text className="card-description">
             {description}
           </Card.Text>
         </Card.Body>

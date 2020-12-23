@@ -1,4 +1,3 @@
-import './App.css';
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from '../../components/header/header';
@@ -6,6 +5,8 @@ import HomePage from '../../components/homepage/home-page';
 import SharePage from '../../components/share/share';
 
 import authenticationServices from '../../services/authenticationServices';
+
+import './App.scss';
 
 class App extends Component {
   constructor(props) {

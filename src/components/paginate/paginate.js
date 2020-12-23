@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 import helpers from '../../helpers/helpers';
 import videoServices from '../../services/videoServices';
 import Movie from '../movie/movie';
-import './paginate.css';
+import './paginate.scss';
 
 export default class Paginate extends Component {
   constructor(props) {

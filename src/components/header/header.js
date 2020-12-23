@@ -5,7 +5,7 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap';
-import './header.css';
+import './header.scss';
 
 export default class Header extends Component {
   constructor(props) {
