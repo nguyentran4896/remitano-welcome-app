@@ -3,6 +3,7 @@ import authenticationService from '../services/authenticationServices';
 export default {
   handleResponse,
   getYoutubeIdFromUrl,
+  isEmailValid,
 };
 
 function handleResponse(response) {
@@ -20,7 +21,7 @@ function handleResponse(response) {
     }
 
     return data;
-  }).catch((r) => console.log(r));
+  });
 }
 
 function getYoutubeIdFromUrl(url) {
@@ -32,4 +33,9 @@ function getYoutubeIdFromUrl(url) {
   } else {
     return null;
   }
+}
+
+function isEmailValid(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }

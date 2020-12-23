@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Header from '../../components/Header/Header';
 import HomePage from '../../components/HomePage/HomePage';
 import SharePage from '../../components/Share/Share';
@@ -19,8 +22,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    authenticationServices.currentUser.subscribe((x) => {
-      this.setState({currentUser: x});
+    authenticationServices.currentUser.subscribe((nextUserState) => {
+      if (nextUserState || (this.state.currentUser && !nextUserState)) {
+        this.setState({currentUser: nextUserState});
+      }
     });
   }
 
@@ -40,6 +45,18 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Header handleSignUp={this.signUp} handleLogin={this.login} handleLogout={this.logout} currentUser={this.state.currentUser}/>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          style={{marginTop: '50px'}}
+        />
         <Switch>
           <Route path='/share' component={() => <SharePage currentUser={this.state.currentUser} />} />
           <Route path='/' component={HomePage} />

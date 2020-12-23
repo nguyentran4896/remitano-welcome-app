@@ -5,13 +5,18 @@ import {
   FormControl,
   Button,
 } from 'react-bootstrap';
+
 import './header.scss';
 
 export default class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {username: '', password: ''};
+    this.state = {
+      username: '',
+      password: '',
+    };
+
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.signUp = this.signUp.bind(this);
@@ -20,9 +25,11 @@ export default class Header extends Component {
   login() {
     const {handleLogin} = this.props;
     const {username, password} = this.state;
-    if (!username || !password) {
-      alert('missing information');
-    }
+
+    if (!verifyInput(username, password)) {
+      return;
+    };
+
     handleLogin(username, password);
   }
 
@@ -35,9 +42,11 @@ export default class Header extends Component {
   signUp() {
     const {handleSignUp} = this.props;
     const {username, password} = this.state;
-    if (!username || !password) {
-      alert('missing information');
-    }
+
+    if (!verifyInput(username, password)) {
+      return;
+    };
+
     handleSignUp(username, password);
   }
 
@@ -80,5 +89,19 @@ export default class Header extends Component {
         </Navbar>
       </div>
     );
+  }
+
+  verifyInput(username, password) {
+    if (!helpers.isEmailValid(username)) {
+      toast.error('Your email is not valid! Please check again.', TOAST_DEFAULT_OPTIONS);
+      return false;
+    }
+
+    if (!password || password.length < 6) {
+      toast.error('Your password must be at least 6 characters! Please check again.', TOAST_DEFAULT_OPTIONS);
+      return false;
+    }
+
+    return true;
   }
 }

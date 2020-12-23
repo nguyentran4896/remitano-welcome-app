@@ -1,13 +1,24 @@
 import {BehaviorSubject} from 'rxjs';
+import {toast} from 'react-toastify';
 
 import config from '../config.json';
 import helpers from '../helpers/helpers';
+
+const TOAST_DEFAULT_OPTIONS = {
+  position: 'top-right',
+  autoClose: 4000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 let currentUserSubject;
 try {
   currentUserSubject= new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 } catch (error) {
-  console.log(error);
+  currentUserSubject = new BehaviorSubject(null);
 }
 
 
@@ -45,15 +56,16 @@ function login(username, password) {
         return user;
       })
       .catch((err) =>{
-        console.log(err);
-        alert(err);
+        toast.error(err, TOAST_DEFAULT_OPTIONS);
       });
 }
 
 function logout() {
   // remove user from local storage to log user out
   localStorage.removeItem('currentUser');
+  localStorage.removeItem('id_token');
   currentUserSubject.next(null);
+  toast.success('Logout success', TOAST_DEFAULT_OPTIONS);
 }
 
 function signUp(username, password) {
@@ -64,7 +76,7 @@ function signUp(username, password) {
   };
 
   return fetch(`${config.baseApi}/signup`, requestOptions)
-      .then(handleResponse)
+      .then(helpers.handleResponse)
       .then((user) => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -73,7 +85,6 @@ function signUp(username, password) {
         return user;
       })
       .catch((err) =>{
-        console.log(err);
-        alert(err);
+        toast.error(err, TOAST_DEFAULT_OPTIONS);
       });
 }
