@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ReactPaginate from 'react-paginate';
+import helpers from '../../helpers/helpers';
 import videoServices from '../../services/videoServices';
+import Movie from '../movie/movie';
 import './paginate.css';
 
 export default class Paginate extends Component {
@@ -9,7 +11,7 @@ export default class Paginate extends Component {
     this.state = {
       offset: 0,
       data: [],
-      perPage: 10,
+      perPage: 3,
       currentPage: 0,
     };
     this.handlePageClick = this
@@ -17,17 +19,15 @@ export default class Paginate extends Component {
         .bind(this);
   }
   receivedData() {
-    console.log(this.state);
     videoServices.getListVideo(this.state.offset, this.state.offset + this.state.perPage).then(async (data) => {
-      const postData = data.map((pd, i) =>
-        <React.Fragment key={i}>
-          {console.log(pd)}
-          <p>{pd.title}</p>
-          <img src={pd.thumbnailUrl} alt="" />
-        </React.Fragment>);
+      const postData = data
+          .filter((video)=> !!helpers.getYoutubeIdFromUrl(video.url))
+          .map((video, i) =>
+            <Movie key={i} video={video} />,
+          );
 
-      const videoCount = parseInt(await videoServices.getVideoCount());
-      console.log('video count: ' + videoCount);
+      const videoCountResp = await videoServices.getVideoCount();
+      const videoCount = parseInt(videoCountResp);
       this.setState({
         pageCount: Math.ceil(videoCount / this.state.perPage),
         postData,

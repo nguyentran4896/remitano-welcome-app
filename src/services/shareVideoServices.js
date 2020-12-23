@@ -1,5 +1,5 @@
 import config from '../config.json';
-import {handleResponse} from '../helpers/helpers';
+import helpers from '../helpers/helpers';
 
 export default function share(url) {
   const requestOptions = {
@@ -13,7 +13,7 @@ export default function share(url) {
   };
 
   return fetch(`${config.baseApi}/movies`, requestOptions)
-      .then(handleResponse)
+      .then(helpers.handleResponse)
       .then((data) => {
         console.log(data);
         return data;

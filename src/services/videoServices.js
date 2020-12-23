@@ -1,5 +1,5 @@
 import config from '../config.json';
-import {handleResponse} from '../helpers/helpers';
+import helpers from '../helpers/helpers';
 
 export default {
   getListVideo,
@@ -16,13 +16,9 @@ function getListVideo(offset, limit) {
     credentials: 'include',
   };
 
-  console.log(offset);
-  console.log(limit);
-
   return fetch(`${config.baseApi}/movies?offset=${offset}&limit=${limit}`, requestOptions)
-      .then(handleResponse)
+      .then(helpers.handleResponse)
       .then((data) => {
-        console.log(data);
         return data;
       })
       .catch((err) =>{
@@ -42,7 +38,7 @@ function getVideoCount() {
   };
 
   return fetch(`${config.baseApi}/movies-count`, requestOptions)
-      .then(handleResponse)
+      .then(helpers.handleResponse)
       .then((data) => {
         console.log(data);
         return data;

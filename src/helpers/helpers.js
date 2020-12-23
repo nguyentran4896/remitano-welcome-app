@@ -1,6 +1,11 @@
 import authenticationService from '../services/authenticationServices';
 
-export function handleResponse(response) {
+export default {
+  handleResponse,
+  getYoutubeIdFromUrl,
+};
+
+function handleResponse(response) {
   return response.text().then((text) => {
     const data = text && JSON.parse(text);
     if (!response.ok) {
@@ -16,4 +21,15 @@ export function handleResponse(response) {
 
     return data;
   }).catch((r) => console.log(r));
+}
+
+function getYoutubeIdFromUrl(url) {
+  if (!url) return null;
+  const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length == 11) {
+    return match[2];
+  } else {
+    return null;
+  }
 }

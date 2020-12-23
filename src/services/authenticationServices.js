@@ -1,7 +1,7 @@
 import {BehaviorSubject} from 'rxjs';
 
 import config from '../config.json';
-import {handleResponse} from '../helpers/helpers';
+import helpers from '../helpers/helpers';
 
 let currentUserSubject;
 try {
@@ -33,7 +33,7 @@ function login(username, password) {
   };
 
   return fetch(`${config.baseApi}/auth`, requestOptions)
-      .then(handleResponse)
+      .then(helpers.handleResponse)
       .then((user) => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', user ? JSON.stringify(user) : '');
