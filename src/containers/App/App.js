@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Header from '../../components/header/header';
-import HomePage from '../../components/homepage/home-page';
-import SharePage from '../../components/share/share';
+import Header from '../../components/Header/Header';
+import HomePage from '../../components/HomePage/HomePage';
+import SharePage from '../../components/Share/Share';
 
 import authenticationServices from '../../services/authenticationServices';
 
