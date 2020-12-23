@@ -19,10 +19,12 @@ export default class Paginate extends Component {
   receivedData() {
     console.log(this.state);
     videoServices.getListVideo(this.state.offset, this.state.offset + this.state.perPage).then(async (data) => {
-      const postData = data.map((pd, i) => <React.Fragment key={i}>
-        <p>{pd.title}</p>
-        <img src={pd.thumbnailUrl} alt="" />
-      </React.Fragment>);
+      const postData = data.map((pd, i) =>
+        <React.Fragment key={i}>
+          {console.log(pd)}
+          <p>{pd.title}</p>
+          <img src={pd.thumbnailUrl} alt="" />
+        </React.Fragment>);
 
       const videoCount = parseInt(await videoServices.getVideoCount());
       console.log('video count: ' + videoCount);
