@@ -30,6 +30,7 @@ export default {
   get currentUserValue() {
     return currentUserSubject.value;
   },
+  updateCurrentUser,
 };
 
 function login(username, password) {
@@ -65,7 +66,7 @@ function logout() {
   localStorage.removeItem('currentUser');
   localStorage.removeItem('id_token');
   currentUserSubject.next(null);
-  toast.success('Logout success', TOAST_DEFAULT_OPTIONS);
+  // toast.success('Logout success', TOAST_DEFAULT_OPTIONS);
 }
 
 function signUp(username, password) {
@@ -80,6 +81,7 @@ function signUp(username, password) {
       .then((user) => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('id_token', user ? user.token : '');
 
         currentUserSubject.next(user);
         return user;
@@ -87,4 +89,8 @@ function signUp(username, password) {
       .catch((err) =>{
         toast.error(err, TOAST_DEFAULT_OPTIONS);
       });
+}
+
+function updateCurrentUser(user) {
+  user && currentUserSubject.next(user);
 }

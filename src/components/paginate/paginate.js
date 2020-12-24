@@ -25,7 +25,7 @@ export default class Paginate extends Component {
           .map((video, i) => {
             const userCreated = video.userCreated;
             video.userCreated = undefined;
-            return <Movie key={i} video={video} userCreated={userCreated} />;
+            return <Movie key={i} video={video} userCreated={userCreated} userId={this.props.userId} />;
           },
           );
 

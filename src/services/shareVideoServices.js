@@ -24,14 +24,20 @@ export default function share(url) {
     credentials: 'include',
   };
 
-  return fetch(`${config.baseApi}/movies`, requestOptions)
-      .then(helpers.handleResponse)
-      .then((data) => {
-        toast.success(`Successfully sharing this video!`);
-        return data;
-      })
-      .catch((err) =>{
-        toast.error(err, TOAST_DEFAULT_OPTIONS);
-        return null;
-      });
+  try {
+    return fetch(`${config.baseApi}/movies`, requestOptions)
+        .then(helpers.handleResponse)
+        .then((data) => {
+          toast.success(`Successfully sharing this video!`);
+          return data;
+        })
+        .catch((err) =>{
+          console.log(err);
+          toast.error('An error occurred. Try again later!', TOAST_DEFAULT_OPTIONS);
+          return null;
+        });
+  } catch (err) {
+    console.log(err);
+    toast.error(err, TOAST_DEFAULT_OPTIONS);
+  }
 }

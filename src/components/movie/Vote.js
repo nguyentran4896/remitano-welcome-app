@@ -9,8 +9,8 @@ import helpers from '../../helpers/helpers';
 export default class Vote extends Component {
   constructor(props) {
     super(props);
-    const {votedUp, votedDown} = this.props;
-    this.state = {votedUp, votedDown};
+    const {votedUp, votedDown, videoId} = this.props;
+    this.state = {votedUp, votedDown, videoId};
   }
   render() {
     // voted up or down
@@ -26,8 +26,13 @@ export default class Vote extends Component {
     // unvoted
     return (
       <>
-        <FontAwesomeIcon icon={faThumbsUp} size="2x" />
-        <FontAwesomeIcon icon={faThumbsDown} size="2x" />
+        <a className="thumb-unvoted" onClick={this.props.handleVoteUp}>
+          <FontAwesomeIcon icon={faThumbsUp} size="2x" />
+        </a>
+
+        <a className="thumb-unvoted" onClick={this.props.handleVoteDown}>
+          <FontAwesomeIcon icon={faThumbsDown} size="2x" />
+        </a>
       </>
     );
   }

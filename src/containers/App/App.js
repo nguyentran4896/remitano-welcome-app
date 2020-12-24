@@ -17,14 +17,19 @@ class App extends Component {
 
     this.state = {
       currentUser: authenticationServices.currentUserValue,
+      userId: authenticationServices.currentUserValue ? authenticationServices.currentUserValue._id : null,
     };
     this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
-    authenticationServices.currentUser.subscribe((nextUserState) => {
-      if (nextUserState || (this.state.currentUser && !nextUserState)) {
-        this.setState({currentUser: nextUserState});
+    authenticationServices.currentUser.subscribe((nextUser) => {
+      // vote or unvote, not change login status
+      if (this.state.currentUser && nextUser && this.state.currentUser._id === nextUser._id) return;
+
+      // change login status
+      if (nextUser || (this.state.currentUser && !nextUser)) {
+        this.setState({currentUser: nextUser, userId: nextUser ? nextUser._id : null});
       }
     });
   }
@@ -59,7 +64,7 @@ class App extends Component {
         />
         <Switch>
           <Route path='/share' component={() => <SharePage currentUser={this.state.currentUser} />} />
-          <Route path='/' component={HomePage} />
+          <Route path='/' component={() => <HomePage userId={this.state.userId} />} />
         </Switch>
       </BrowserRouter>
     );

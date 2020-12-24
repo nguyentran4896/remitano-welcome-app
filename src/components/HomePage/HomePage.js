@@ -6,7 +6,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <Container className="homepage">
-        <Paginate />
+        <Paginate userId={this.props.userId} />
       </Container>
     );
   }
