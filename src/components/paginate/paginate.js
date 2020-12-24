@@ -54,7 +54,7 @@ export default class Paginate extends Component {
   }
   render() {
     if (!this.state.postData.length) {
-      return ('No video shared yet!! Give it a try!');
+      return (<span className="animate__animated animate__fadeIn">No video shared yet!! Give it a try!</span>);
     }
     return (
       <div>
