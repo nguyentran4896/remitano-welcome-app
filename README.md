@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# remitano-welcome-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![screen shot](./screen-shot-1.png)
+<!-- ![screen shot](./screen-shot-2.png) -->
 
-## Available Scripts
 
-In the project directory, you can run:
+<table>
+<tr>
+<td>
+  Remitano welcome project about a web application that allows users to share Youtube videos.
+</td>
+</tr>
+</table>
 
-### `yarn start`
+## Demo
+Here is a working live demo :  [DEMO](https://theweatherforecast.today/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Usage
+```
+git clone
+npm i
+vim .env
+```
+Put in your `.env` file
 
-### `yarn test`
+```
+NODE_ENV=development
+PORT=3001
+MONGO_URI=
+JWT_SECRET=
+CLIENT_DOMAIN=http://localhost:3000
+```
+Beside, you will need an `youtube-credentials.json` defining Youtube API credentials for retriving video's snippet.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+// youtube-credentials.json
+{
+    "installed": {
+        "client_id": ...,
+        "project_id": ...,
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": ...,
+        "redirect_uris": [
+            "http://localhost"
+        ],
+        "javascript_origins": [
+            "http://localhost"
+        ]
+    }
+}
+```
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built with 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Client-side
+- [ReactJS](https://reactjs.org/)
+- [create-react-app](https://github.com/facebook/create-react-app)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [react-router-dom](https://reactrouter.com/web/guides/quick-start)
+- [Fontawesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
+- [Animate.css](https://animate.style/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Server-side
+- [Express.js](https://expressjs.com/)
+- [NodeJS](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/2)
 
-### `yarn eject`
+### 3. Unit test & Intergration test
+- [Sinon.JS](https://sinonjs.org/)
+- [Chai](https://www.chaijs.com/)
+- [Mocha](https://mochajs.org/)
+- [Maven](https://maven.apache.org/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Testcase:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* logInTest
+* logOutTest
+* signUpTest
+* shareVideoTest
+* voteUpVideoTest
+* voteDownVideoTest
+* unVoteVideoTest
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![screen shot](./screen-shot-testcase.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## RESTful API sample
 
-## Learn More
+`GET /api/v1/movies/?offset=0&limit=10`<br>
+`POST /api/v1/movies/`<br>
+`PUT /api/v1/movies/<id>`<br>
+`DELETE /api/v1/movies/<id>`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+MIT
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
