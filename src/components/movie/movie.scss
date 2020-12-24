@@ -1,6 +1,7 @@
 .movie-card {
   padding-top: 10px;
   padding-bottom: 10px;
+  display: flex;
   flex-direction: row;
 
   .video-wrap {
@@ -23,8 +24,10 @@
     font-size: 14px;
     margin-bottom: 0;
 
-    .thumb-unvoted {
+    .thumb-unvoted, .thumb-voted {
       display: inline-block;
+      margin-left: 10px;
+      cursor: pointer;
     }
 
     .thumb-voted {

@@ -9,6 +9,7 @@ import SharePage from '../../components/SharePage/SharePage';
 
 import authenticationServices from '../../services/authenticationServices';
 
+import 'animate.css';
 import './App.scss';
 
 class App extends Component {

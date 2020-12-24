@@ -13,8 +13,8 @@ export default class Vote extends Component {
     if (votedUp || votedDown) {
       return (
         <a className="thumb-voted" onClick={this.props.handleUnVote}>
-          {votedUp && <FontAwesomeIcon icon={thumbVotedUp} size="2x" />}
-          {votedDown && <FontAwesomeIcon icon={thumbVotedDown} size="2x" />}
+          {votedUp && <FontAwesomeIcon className="animate__animated animate__rubberBand" icon={thumbVotedUp} size="2x" />}
+          {votedDown && <FontAwesomeIcon className="animate__animated animate__rubberBand" icon={thumbVotedDown} size="2x" />}
         </a>
       );
     }
@@ -23,11 +23,11 @@ export default class Vote extends Component {
     return (
       <>
         <a className="thumb-unvoted" onClick={this.props.handleVoteUp}>
-          <FontAwesomeIcon icon={faThumbsUp} size="2x" />
+          <FontAwesomeIcon className="animate__animated animate__swing" icon={faThumbsUp} size="2x" />
         </a>
 
         <a className="thumb-unvoted" onClick={this.props.handleVoteDown}>
-          <FontAwesomeIcon icon={faThumbsDown} size="2x" />
+          <FontAwesomeIcon className="animate__animated animate__swing" icon={faThumbsDown} size="2x" />
         </a>
       </>
     );

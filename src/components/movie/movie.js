@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {Card, Col} from 'react-bootstrap';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faThumbsUp, faThumbsDown} from '@fortawesome/free-regular-svg-icons';
+
 import helpers from '../../helpers/helpers';
 import voteServices from '../../services/voteServices';
 
@@ -56,7 +59,7 @@ export default class Movie extends Component {
     const userCreated = this.props.userCreated;
     const urlEmbed = `https://youtube.com/embed/${helpers.getYoutubeIdFromUrl(url)}`;
     return (
-      <Col className="movie-card" style={{display: 'flex'}}>
+      <Col className="movie-card animate__animated animate__fadeIn" >
         <div className="video-wrap embed-responsive embed-responsive-item embed-responsive-16by9">
           <iframe width="auto" height="auto" src={urlEmbed} frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
@@ -64,7 +67,7 @@ export default class Movie extends Component {
         </div>
         <Card.Body>
           <Card.Link className="card-title" href={url} target="_blank">{title}</Card.Link>
-          <Card.Text className="card-author">Shared by: {userCreated.username}
+          <div className="card-author">Shared by: {userCreated.username}
             <Vote
               handleVoteUp={this.voteUp}
               handleVoteDown={this.voteDown}
@@ -72,7 +75,11 @@ export default class Movie extends Component {
               votedUp={likes.includes(userId)}
               votedDown={disLikes.includes(userId)}
               videoId={id}/>
-          </Card.Text>
+            <div className="vote-count">
+              {likes.length}<FontAwesomeIcon className="animate__animated animate__backInDown" icon={faThumbsUp} fixedWidth />&nbsp;
+              {disLikes.length}<FontAwesomeIcon className="animate__animated animate__backInDown" icon={faThumbsDown} fixedWidth/>
+            </div>
+          </div>
           <Card.Text className="card-description">
             {description}
           </Card.Text>
