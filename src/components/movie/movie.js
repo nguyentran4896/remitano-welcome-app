@@ -83,8 +83,8 @@ export default class Movie extends Component {
               videoId={id}/> :''}
             <div className="vote-count">
 
-              {likes.length}<FontAwesomeIcon className="animate__animated animate__heartBeat animate__delay-1s" icon={faThumbsUp} fixedWidth />&nbsp;
-              {disLikes.length}<FontAwesomeIcon className="animate__animated animate__heartBeat animate__delay-1s" icon={faThumbsDown} fixedWidth/>
+              <span className="like-count">{likes.length}</span><FontAwesomeIcon className="animate__animated animate__heartBeat animate__delay-1s" icon={faThumbsUp} fixedWidth />&nbsp;
+              <span className="dislike-count">{disLikes.length}</span><FontAwesomeIcon className="animate__animated animate__heartBeat animate__delay-1s" icon={faThumbsDown} fixedWidth/>
             </div>
           </div>
           <Card.Text className="card-description">
