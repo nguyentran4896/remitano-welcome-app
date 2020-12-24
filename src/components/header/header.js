@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {
+  Nav,
   Navbar,
   Form,
   FormControl,
@@ -68,33 +69,32 @@ export default class Header extends Component {
         <Navbar bg="dark" expand="lg" variant="dark">
           <Navbar.Brand href="/">
             <img
-              src="/logo192.png"
+              src="/logo.png"
               width="30"
               height="30"
               className="d-inline-block align-top"
-              alt="React Bootstrap logo"
+              alt="Youtube Video Sharing logo"
             />
             {' '}
-            Funny Movies
+            Youtube Video Sharing
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           {this.props.currentUser ?
-            <Navbar.Collapse id="basic-navbar-nav" style={{flexDirection: 'row-reverse'}}>
+            <Navbar.Collapse>
               <Form inline>
-                <Navbar.Text>
-      Signed in as: {this.props.currentUser.username}
-                </Navbar.Text>
-                <a className="btn btn-primary" href="/share" variant="outline-success">Share</a>
-                <Button onClick={this.logout} variant="outline-success">Logout</Button>
+                <Navbar.Text>Signed in as: {this.props.currentUser.username}</Navbar.Text>
               </Form>
+              <Nav.Link href="/share">Share</Nav.Link>
+              <Button className="pull-right" onClick={this.logout} variant="outline-secondary">Logout</Button>
             </Navbar.Collapse> :
-            <Navbar.Collapse id="basic-navbar-nav" style={{flexDirection: 'row-reverse'}}>
+
+            <Navbar.Collapse>
               <Form inline>
                 <FormControl type="text" placeholder="Email" className="mr-sm-2" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})} />
                 <FormControl type="text" placeholder="Password" className="mr-sm-2" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} />
                 <Button onClick={this.login} variant="outline-success">Login</Button>
-                <Button onClick={this.signUp} variant="outline-success">Sign Up</Button>
+                <Button onClick={this.signUp} variant="outline-primary">Sign Up</Button>
               </Form>
             </Navbar.Collapse>
           }

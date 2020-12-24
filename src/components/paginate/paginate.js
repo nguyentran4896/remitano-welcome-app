@@ -53,6 +53,9 @@ export default class Paginate extends Component {
     this.receivedData();
   }
   render() {
+    if (!this.state.postData.length) {
+      return ('No video shared yet!! Give it a try!');
+    }
     return (
       <div>
         {this.state.postData}

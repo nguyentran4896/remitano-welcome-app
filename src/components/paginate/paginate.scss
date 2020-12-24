@@ -1,3 +1,4 @@
+$base-color: gray;
 .pagination {
   display: flex;
   justify-content: center;
@@ -7,8 +8,8 @@
   margin-top: 20px;
 }
 .pagination > .active > a{
-  // background-color: #47ccde ;
-  // border-color: #47ccde ;
+  background-color: $base-color ;
+  border-color: $base-color ;
   color: #fff;
 }
 .pagination > li > a{
@@ -18,12 +19,12 @@
   cursor: pointer;
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-  // background-color: #47ccde ;
-  // border-color: #47ccde;
+  background-color: $base-color ;
+  border-color: $base-color;
   outline: none ;
 }
 .pagination > li > a, .pagination > li > span{
-  // color: #47ccde
+  color: $base-color
 }
 .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
   border-radius: unset
