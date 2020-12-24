@@ -6,18 +6,15 @@ import {faThumbsUp, faThumbsDown} from '@fortawesome/free-regular-svg-icons';
 // import './movie.scss';
 
 export default class Vote extends Component {
-  constructor(props) {
-    super(props);
-    const {votedUp, votedDown, videoId} = this.props;
-    this.state = {votedUp, votedDown, videoId};
-  }
   render() {
+    const {votedUp, votedDown} = this.props;
+
     // voted up or down
-    if (this.state.votedUp || this.state.votedDown) {
+    if (votedUp || votedDown) {
       return (
         <>
-          {this.state.votedUp && <FontAwesomeIcon icon={thumbVotedUp} size="2x" />}
-          {this.state.votedDown && <FontAwesomeIcon icon={thumbVotedDown} size="2x" />}
+          {votedUp && <FontAwesomeIcon icon={thumbVotedUp} size="2x" />}
+          {votedDown && <FontAwesomeIcon icon={thumbVotedDown} size="2x" />}
         </>
       );
     }
