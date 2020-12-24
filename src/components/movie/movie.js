@@ -28,8 +28,14 @@ export default class Movie extends Component {
     }
   }
 
-  voteDown() {
-    voteServices.voteUp(this.props.video, this.props.userId);
+  async voteDown() {
+    try {
+      const video = await voteServices.voteDown(this.state.video, this.props.userId);
+      video.userCreated = undefined;
+      this.setState({video: video});
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

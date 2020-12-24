@@ -18,13 +18,20 @@ const TOAST_DEFAULT_OPTIONS = {
 
 export default {
   voteUp,
-  // voteDown,
+  voteDown,
   // unVote,
 };
 
 async function voteUp(video, id) {
   if (video && video.likes && !video.likes.includes(id)) {
     video.likes.push(id);
+  }
+  return await updateMovie(video, id);
+}
+
+async function voteDown(video, id) {
+  if (video && video.disLikes && !video.disLikes.includes(id)) {
+    video.disLikes.push(id);
   }
   return await updateMovie(video, id);
 }
