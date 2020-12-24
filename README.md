@@ -13,7 +13,15 @@
 </table>
 
 ## Demo
-Here is a working live demo :  [DEMO](https://theweatherforecast.today/)
+Here is a working demo :  [LIVE DEMO](https://theweatherforecast.today/) <br>
+https://theweatherforecast.today/ (Unrelated domain name but works fine :v)
+- Features: [VIDEO](https://youtu.be/HSc55mz0sFw)
+- Testing: [VIDEO](https://youtu.be/fKDhn5IYbdg)
+
+## Source Code
+- [Client React App](https://github.com/nguyentran4896/remitano-welcome-app)
+- [NodeJS Server](https://github.com/nguyentran4896/remitano-welcome-server)
+- [Automation Test](https://github.com/nguyentran4896/remitano-welcome-project-automation-test)
 
 
 ## Usage
