@@ -10,7 +10,7 @@ export default class Paginate extends Component {
     super(props);
     this.state = {
       offset: 0,
-      data: [],
+      postData: [],
       perPage: 3,
       currentPage: 0,
     };
@@ -19,13 +19,13 @@ export default class Paginate extends Component {
         .bind(this);
   }
   receivedData() {
-    videoServices.getListVideo(this.state.offset, this.state.offset + this.state.perPage).then(async (data) => {
+    videoServices.getListVideo(this.state.offset, this.state.perPage).then(async (data) => {
       const postData = data
           .filter((video) => !!helpers.getYoutubeIdFromUrl(video.url))
           .map((video, i) => {
             const userCreated = video.userCreated;
             video.userCreated = undefined;
-            return <Movie key={i} video={video} userCreated={userCreated} userId={this.props.userId} />;
+            return <Movie key={this.state.offset + i} video={video} userCreated={userCreated} userId={this.props.userId} />;
           },
           );
 
@@ -76,8 +76,6 @@ export default class Paginate extends Component {
           previousLinkClassName={'page-link'}
           nextClassName={'page-item'}
           nextLinkClassName={'page-link'}
-
-
         />
       </div>
 

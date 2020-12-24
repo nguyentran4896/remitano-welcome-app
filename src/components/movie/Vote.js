@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faThumbsUp as thumbVotedUp, faThumbsDown as thumbVotedDown} from '@fortawesome/free-solid-svg-icons';
 import {faThumbsUp, faThumbsDown} from '@fortawesome/free-regular-svg-icons';
-import helpers from '../../helpers/helpers';
 
 // import './movie.scss';
 
