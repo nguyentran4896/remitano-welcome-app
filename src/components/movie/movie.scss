@@ -26,6 +26,11 @@
     .thumb-unvoted {
       display: inline-block;
     }
+
+    .thumb-voted {
+      display: inline-block;
+      color: gray;
+    }
   }
   .card-description {
     display: inline-block;

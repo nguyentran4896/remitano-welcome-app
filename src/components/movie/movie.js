@@ -16,6 +16,7 @@ export default class Movie extends Component {
 
     this.voteUp = this.voteUp.bind(this);
     this.voteDown = this.voteDown.bind(this);
+    this.unVote = this.unVote.bind(this);
   }
 
   async voteUp() {
@@ -31,6 +32,16 @@ export default class Movie extends Component {
   async voteDown() {
     try {
       const video = await voteServices.voteDown(this.state.video, this.props.userId);
+      video.userCreated = undefined;
+      this.setState({video: video});
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async unVote() {
+    try {
+      const video = await voteServices.unVote(this.state.video, this.props.userId);
       video.userCreated = undefined;
       this.setState({video: video});
     } catch (error) {
@@ -57,6 +68,7 @@ export default class Movie extends Component {
             <Vote
               handleVoteUp={this.voteUp}
               handleVoteDown={this.voteDown}
+              handleUnVote={this.unVote}
               votedUp={likes.includes(userId)}
               votedDown={disLikes.includes(userId)}
               videoId={id}/>

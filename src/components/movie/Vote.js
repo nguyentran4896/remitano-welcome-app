@@ -12,10 +12,10 @@ export default class Vote extends Component {
     // voted up or down
     if (votedUp || votedDown) {
       return (
-        <>
+        <a className="thumb-voted" onClick={this.props.handleUnVote}>
           {votedUp && <FontAwesomeIcon icon={thumbVotedUp} size="2x" />}
           {votedDown && <FontAwesomeIcon icon={thumbVotedDown} size="2x" />}
-        </>
+        </a>
       );
     }
 
