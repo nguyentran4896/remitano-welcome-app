@@ -92,7 +92,7 @@ export default class Header extends Component {
             <Navbar.Collapse>
               <Form inline>
                 <FormControl type="text" placeholder="Email" className="mr-sm-2" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})} />
-                <FormControl type="text" placeholder="Password" className="mr-sm-2" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} />
+                <FormControl type="password" placeholder="Password" className="mr-sm-2" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} />
                 <Button onClick={this.login} variant="outline-success">Login</Button>
                 <Button onClick={this.signUp} variant="outline-primary">Sign Up</Button>
               </Form>
