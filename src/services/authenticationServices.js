@@ -6,7 +6,7 @@ import helpers from '../helpers/helpers';
 
 const TOAST_DEFAULT_OPTIONS = {
   position: 'top-right',
-  autoClose: 4000,
+  autoClose: 3000,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,

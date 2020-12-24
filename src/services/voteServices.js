@@ -3,11 +3,9 @@ import {toast} from 'react-toastify';
 import config from '../config.json';
 import helpers from '../helpers/helpers';
 
-import authenticationServices from './authenticationServices';
-
 const TOAST_DEFAULT_OPTIONS = {
   position: 'top-right',
-  autoClose: 4000,
+  autoClose: 3000,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,

@@ -60,24 +60,31 @@ export default class Movie extends Component {
     const urlEmbed = `https://youtube.com/embed/${helpers.getYoutubeIdFromUrl(url)}`;
     return (
       <Col className="movie-card animate__animated animate__fadeIn" >
-        <div className="video-wrap embed-responsive embed-responsive-item embed-responsive-16by9">
+        <div className="video-wrap embed-responsive embed-responsive-item embed-responsive-16by9 animate__animated animate__fadeInLeft">
           <iframe width="auto" height="auto" src={urlEmbed} frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
           </iframe>
         </div>
-        <Card.Body>
-          <Card.Link className="card-title" href={url} target="_blank">{title}</Card.Link>
+        <Card.Body className="animate__animated animate__fadeInRight">
+          <Card.Link
+            className="card-title"
+            href={url}
+            target="_blank">
+            {title}
+          </Card.Link>
           <div className="card-author">Shared by: {userCreated.username}
-            <Vote
+
+            {this.props.userId ? <Vote
               handleVoteUp={this.voteUp}
               handleVoteDown={this.voteDown}
               handleUnVote={this.unVote}
               votedUp={likes.includes(userId)}
               votedDown={disLikes.includes(userId)}
-              videoId={id}/>
+              videoId={id}/> :''}
             <div className="vote-count">
-              {likes.length}<FontAwesomeIcon className="animate__animated animate__backInDown" icon={faThumbsUp} fixedWidth />&nbsp;
-              {disLikes.length}<FontAwesomeIcon className="animate__animated animate__backInDown" icon={faThumbsDown} fixedWidth/>
+
+              {likes.length}<FontAwesomeIcon className="animate__animated animate__heartBeat animate__delay-1s" icon={faThumbsUp} fixedWidth />&nbsp;
+              {disLikes.length}<FontAwesomeIcon className="animate__animated animate__heartBeat animate__delay-1s" icon={faThumbsDown} fixedWidth/>
             </div>
           </div>
           <Card.Text className="card-description">
