@@ -81,7 +81,6 @@ export default class Paginate extends Component {
           nextLinkClassName={'page-link'}
         />
       </div>
-
     );
   }
 }

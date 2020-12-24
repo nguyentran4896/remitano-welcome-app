@@ -57,7 +57,6 @@ function updateMovie(video) {
   return fetch(`${config.baseApi}/movies/${video._id || video.id}`, requestOptions)
       .then(helpers.handleResponse)
       .then((video) => {
-        // toast.success('Done', TOAST_DEFAULT_OPTIONS);
         return video;
       })
       .catch((err) =>{

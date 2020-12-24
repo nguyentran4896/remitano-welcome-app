@@ -38,7 +38,6 @@ function login(username, password) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      // 'Authorization': localStorage.getItem('id_token') || undefined,
     },
     body: JSON.stringify({username, password}),
     credentials: 'include',
@@ -66,7 +65,6 @@ function logout() {
   localStorage.removeItem('currentUser');
   localStorage.removeItem('id_token');
   currentUserSubject.next(null);
-  // toast.success('Logout success', TOAST_DEFAULT_OPTIONS);
 }
 
 function signUp(username, password) {

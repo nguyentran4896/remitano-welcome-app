@@ -3,8 +3,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faThumbsUp as thumbVotedUp, faThumbsDown as thumbVotedDown} from '@fortawesome/free-solid-svg-icons';
 import {faThumbsUp, faThumbsDown} from '@fortawesome/free-regular-svg-icons';
 
-// import './movie.scss';
-
 export default class Vote extends Component {
   render() {
     const {votedUp, votedDown} = this.props;
